@@ -1,0 +1,63 @@
+---
+
+/*
+    *  -----------------------------------------------------------------  *
+    *  -----  BlogLayout.astro  --  /src/layouts/BlogLayout.astro  -----  *
+    *  -----------------------------------------------------------------  *
+*/
+
+
+import { ClientRouter } from 'astro:transitions';
+import '@styles/global.css';
+import '@styles/blog.css';
+
+
+interface Props {
+    
+    /** -----  Blog Frontmatter  ----- */
+    frontmatter: {
+        title: string;
+        date?: string;
+        description?: string;
+        author?: string;
+        image?: string;
+        tags?: string[];
+        layout?: string;
+    };
+}
+
+const { frontmatter } = Astro.props;
+
+
+console.log(' ~ frontmatter  => ', frontmatter);
+
+
+---
+
+
+
+<!doctype html>
+<html lang="es">
+	
+    <head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/post-favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title> {frontmatter.title} </title>
+        <ClientRouter/>
+	</head>
+	
+    <body class="bg-gray-900 flex flex-col items-center justify-center min-h-screen">
+
+        <a href="/" class="self-start ml-4 mt-4"> Regresar </a>
+    
+        <main class="mb-10 max-w-5xl px-2 py-2 w-full">
+
+            <slot />
+
+        </main>
+    
+    </body>
+
+</html>
