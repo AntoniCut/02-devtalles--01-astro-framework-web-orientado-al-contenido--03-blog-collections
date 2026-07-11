@@ -1,18 +1,21 @@
 ---
-title: Post 2 md - Empezando con Flutter
-date: 2024-08-10
-description: Post 2 md - Aprende a desarrollar aplicaciones móviles con Flutter y Dart.
-author: John Smith
-image: '/assets/images/post-02.png'
-tags: [Flutter, Mobile Development, Dart]
 
-layout: '../../layouts/BlogLayout.astro'
+
+#    *  ----------------------------------------------------------  *
+#    *  -----  post-02.md  --  /src/content/blog/post-02.md  -----  *
+#    *  ----------------------------------------------------------  *
+
+
+order: 2
+title: Empezando con Flutter
+date: 2024-08-10
+description: Aprende a desarrollar aplicaciones móviles con Flutter y Dart.
+author: John Smith
+image: 'images/post-02.png'
+tags: [Flutter, Mobile Development, Dart]
 
 ---
 
-# Post 2 md - Empezando con Flutter
-
-<img src="/assets/images/post-02.png" width="350" alt="Empezando con Flutter" />
 
 Flutter es un kit de herramientas de IU para construir aplicaciones compiladas nativamente para móviles, web y escritorio desde un único código base.
 

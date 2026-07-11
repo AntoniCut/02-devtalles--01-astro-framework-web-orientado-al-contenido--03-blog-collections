@@ -9,48 +9,45 @@
 
 
 import Layout from '@layouts/Layout.astro';
-import { siteConfig } from '@config/site-config.ts';
-import BlogPost from '@components/BlogPost.astro';
-import type { MarkdownPost } from '@interfaces/markdown.ts';
+import Header from '@components/Header.astro';
+import { siteConfig } from '@config/site-config';
+import TypeBlogPost from '@components/TypeBlogPost.astro';
+import { getCollection } from 'astro:content';
 
 
-/** -----  Import all blog posts  ----- */
-const matches = import.meta.glob<MarkdownPost>(
-    './posts/*.{md,mdx}',
-    { eager: true }
-);
-
-/** -----  Get all posts  ----- */
-const posts = Object.values(matches);
+/** -----  Get all blog posts  ----- */
+const blogPosts = await getCollection('blog');
 
 /** -----  Get all frontmatter  ----- */
-const frontmatter = posts.map((post) => post.frontmatter);
+const frontmatter = blogPosts.map((post) => post.data);
 
 //  -----  Debug  -----
-console.log(' ~ matches  => ', matches);
-console.log(' ~ posts  => ', posts);
-
-
+console.log(' ~ blogPosts  => ', blogPosts);
 console.log(' ~ frontmatter  => ', frontmatter);
+
 
 ---
 
-<Layout title="Blog">
+<Layout title={siteConfig.title}>
+    
     <section class="bg-dark:bg-gray-900">
+        
         <div class="container px-6 py-10 mx-auto">
-            <h1 class="text-3xl font-semibold text-amber-100 capitalize lg:text-4xl dark:text-white">
+                
+            <!--  -----  Title Page Blog  -----  -->
+            <Header transition:name='header'> 
                 {siteConfig.title}
-            </h1>
+            </Header>
+          
 
             <!--  -----  Posts Container  ----- -->
             <div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
                 
                 {
-                    posts.map((post) => (
-                        <BlogPost {...post} />
+                    blogPosts.map((blogPost) => (
+                        <TypeBlogPost post={blogPost} />
                     ))
-                }
-                                
+                }                                
             </div>
 
         </div>

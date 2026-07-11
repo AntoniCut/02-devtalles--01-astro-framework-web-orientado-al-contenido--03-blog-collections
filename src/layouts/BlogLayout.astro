@@ -8,8 +8,10 @@
 
 
 import { ClientRouter } from 'astro:transitions';
+import type { ImageMetadata } from 'astro';
 import '@styles/global.css';
 import '@styles/blog.css';
+import LinkGoBackAndImages from '../components/LinkGoBackAndImages.astro';
 
 
 interface Props {
@@ -17,10 +19,10 @@ interface Props {
     /** -----  Blog Frontmatter  ----- */
     frontmatter: {
         title: string;
-        date?: string;
+        date?: string | Date;
         description?: string;
         author?: string;
-        image?: string;
+        image?: string | ImageMetadata;
         tags?: string[];
         layout?: string;
     };
@@ -50,13 +52,18 @@ console.log(' ~ frontmatter  => ', frontmatter);
 	
     <body class="bg-gray-900 flex flex-col items-center justify-center min-h-screen">
 
-        <a href="/" class="self-start ml-4 mt-4"> Regresar </a>
+        <LinkGoBackAndImages href="/" text="Regresar" id="btnBack" />
     
         <main class="mb-10 max-w-5xl px-2 py-2 w-full">
 
             <slot />
 
         </main>
+
+        <!--  -----  Button to go back to the top  -----  -->
+        <div class="my-5">
+            <a href="#btnBack"> Ir arriba </a>
+        </div>
     
     </body>
 

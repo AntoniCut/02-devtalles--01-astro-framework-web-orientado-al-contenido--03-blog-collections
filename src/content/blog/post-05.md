@@ -1,18 +1,21 @@
 ---
-title: Post 5 md - CSS Grid Layout - Una guía completa
-date: 2023-06-25
-description: Post 5 md - Aprende a utilizar CSS Grid Layout para crear diseños complejos de forma sencilla.
-author: Emily Davis
-image: '/assets/images/post-05.png'
-tags: [CSS, Web Design, Frontend]
 
-layout: '../../layouts/BlogLayout.astro'
+
+#    *  ----------------------------------------------------------  *
+#    *  -----  post-05.md  --  /src/content/blog/post-05.md  -----  *
+#    *  ----------------------------------------------------------  *
+
+
+order: 5
+title: CSS Grid Layout - Una guía completa
+date: 2023-06-25
+description: Aprende a utilizar CSS Grid Layout para crear diseños complejos de forma sencilla.
+author: Emily Davis
+image: './images/post-05.png'
+tags: [CSS, Web Design, Frontend]
 
 ---
 
-# Post 5 md - CSS Grid Layout: Una guía completa
-
-<img src="/assets/images/post-05.png" width="350" alt="CSS Grid Layout - Una guía completa" />
 
 CSS Grid Layout es una poderosa herramienta que te permite crear diseños complejos de forma sencilla y flexible. En esta guía, aprenderás cómo utilizar CSS Grid Layout para crear diseños de páginas web modernas y responsivas.
 

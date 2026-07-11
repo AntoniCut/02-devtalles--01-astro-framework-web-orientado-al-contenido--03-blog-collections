@@ -8,6 +8,7 @@
         "dist"
     ],
     "compilerOptions": {
+        "ignoreDeprecations": "6.0",
         "baseUrl": ".",
         "paths": {
             "@components/*": [
@@ -24,6 +25,9 @@
             ],
             "@styles/*": [
                 "src/styles/*"
+            ],
+            "@images/*": [
+                "src/assets/images/*"
             ],
             "@utils/*": [
                 "src/utils/*"

@@ -8,7 +8,7 @@
 /** -----  Site Config  ----- */
 export const siteConfig = {
   
-    title: "AntonyDev's Blog",
+    title: "AntonyDev's Blog Collections",
     description: 'Un blog de ejemplo construido con Astro y Tailwind CSS'
 
 }

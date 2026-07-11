@@ -1,20 +1,21 @@
 ---
-title: Post 1 md - Explorando Funciones de ES6!!!
+
+
+#    *  ----------------------------------------------------------  *
+#    *  -----  post-01.md  --  /src/content/blog/post-01.md  -----  *
+#    *  ----------------------------------------------------------  *
+
+
+order: 1
+title: Explorando Funciones de ES6!!!
 date: 2023-06-01
-description: Post 1 md -  Explorando algunas de las nuevas funciones de ES6 en JavaScript.
+description: Explorando algunas de las nuevas funciones de ES6 en JavaScript.
 author: Jane Doe
-image: '/assets/images/post-01.png'
+image: 'images/post-01.png'
 tags: [JavaScript, ES6, Programming]
-
-
-layout: ../../layouts/BlogLayout.astro
 
 ---
 
-# Post 1 md - Explorando Funciones de ES6!!!
-
-
-<img src="/assets/images/post-01.png" width="350" alt="Explorando Funciones de ES6" />
 
 JavaScript ES6 introdujo varias funciones nuevas que han hecho que la codificación en JavaScript sea más eficiente y agradable. Vamos a explorar algunas de estas funciones.
 

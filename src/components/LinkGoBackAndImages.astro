@@ -1,0 +1,40 @@
+---
+
+/*
+    *  --------------------------------------------------------------------------------------  *
+    *  -----  LinkGoBackAndImages.astro  --  /src/components/LinkGoBackAndImages.astro  -----  *
+    *  --------------------------------------------------------------------------------------  *
+
+*/
+
+
+interface Props {
+    href: string;
+    text: string;
+    id?: string;
+}
+
+const { href: propHref, text: propText, id: propId } = Astro.props;
+
+/** -----  Check if the current page is the images page  ----- */
+const isImagesPage = Astro.url.pathname.startsWith('/images');
+
+/** -----  Set the href  ----- */
+const href = isImagesPage ? '/' : propHref;
+
+/** -----  Set the text  ----- */
+const text = isImagesPage ? 'Regresar' : propText;
+
+/** -----  Set the id  ----- */
+const id = propId || 'btnBack';
+
+---
+
+
+<a 
+    href={href} 
+    id={id} 
+    class="self-start ml-4 mt-4 text-blue-500 hover:text-blue-700"
+> 
+    {text} 
+</a>
