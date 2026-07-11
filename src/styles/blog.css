@@ -22,10 +22,6 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  @apply mt-10;
-}
-
 h1 {
   @apply text-3xl text-white my-5;
 }

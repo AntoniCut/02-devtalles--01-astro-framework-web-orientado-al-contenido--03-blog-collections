@@ -30,28 +30,26 @@ console.log(' ~ frontmatter  => ', frontmatter);
 
 <Layout title={siteConfig.title}>
     
-    <section class="bg-dark:bg-gray-900">
-        
-        <div class="container px-6 py-10 mx-auto">
+    <div class="w-full space-y-10">
                 
-            <!--  -----  Title Page Blog  -----  -->
-            <Header transition:name='header'> 
-                {siteConfig.title}
-            </Header>
-          
+        <!--  -----  Title Page Blog  -----  -->
+        <Header transition:name='header'> 
+            {siteConfig.title}
+        </Header>
+      
 
-            <!--  -----  Posts Container  ----- -->
-            <div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
+        <!--  -----  Posts Container  ----- -->
+        <section aria-label="Entradas de blog">
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
                 
                 {
-                    blogPosts.map((blogPost) => (
+                    blogPosts.map((blogPost) => 
                         <TypeBlogPost post={blogPost} />
-                    ))
+                    )
                 }                                
             </div>
+        </section>
 
-        </div>
-
-    </section>
+    </div>
 	
 </Layout>

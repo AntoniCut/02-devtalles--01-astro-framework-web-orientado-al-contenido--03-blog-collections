@@ -11,7 +11,7 @@ import { ClientRouter } from 'astro:transitions';
 import type { ImageMetadata } from 'astro';
 import '@styles/global.css';
 import '@styles/blog.css';
-import LinkGoBackAndImages from '../components/LinkGoBackAndImages.astro';
+import Navbar from '@components/Navbar.astro';
 
 
 interface Props {
@@ -50,11 +50,11 @@ console.log(' ~ frontmatter  => ', frontmatter);
         <ClientRouter/>
 	</head>
 	
-    <body class="bg-gray-900 flex flex-col items-center justify-center min-h-screen">
+    <body class="bg-gray-900 flex flex-col items-center min-h-screen">
 
-        <LinkGoBackAndImages href="/" text="Regresar" id="btnBack" />
+        <Navbar />
     
-        <main class="mb-10 max-w-5xl px-2 py-2 w-full">
+        <main class="w-full mb-10 max-w-5xl px-6 py-8 sm:py-10">
 
             <slot />
 
@@ -62,7 +62,7 @@ console.log(' ~ frontmatter  => ', frontmatter);
 
         <!--  -----  Button to go back to the top  -----  -->
         <div class="my-5">
-            <a href="#btnBack"> Ir arriba </a>
+            <a href="#navbar"> Ir arriba </a>
         </div>
     
     </body>

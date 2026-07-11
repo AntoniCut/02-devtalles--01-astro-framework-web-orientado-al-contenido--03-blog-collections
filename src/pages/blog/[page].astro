@@ -1,0 +1,96 @@
+---
+
+/*
+    *  -------------------------------------------------------------  *
+    *  -----  [page].astro  --  /src/pages/blog/[page].astro  -----  *
+    *  -------------------------------------------------------------  *
+*/
+
+
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import Layout from '@layouts/Layout.astro';
+import TypeBlogPost from '@components/TypeBlogPost.astro';
+import Header from '@components/Header.astro';
+import { siteConfig } from '@config/site-config';
+
+
+/** -----  Get the static paths  ----- */
+export const getStaticPaths = (async ({ paginate }) => {
+
+    /** -----  Get the blog posts  ----- */        
+    const blogPosts = await getCollection('blog');
+
+    /** -----  Paginate the blog posts  ----- */
+    return paginate(blogPosts, { pageSize: 2 });
+
+}) satisfies GetStaticPaths;
+
+
+const { page } = Astro.props;
+
+
+---
+
+
+<Layout title={siteConfig.title}>
+    
+    <div class="w-full space-y-10">
+
+        <!--  -----  Title Page Blog  -----  -->
+        <Header transition:name='header'> 
+            {siteConfig.title}
+        </Header>
+
+        <section aria-label="Entradas de blog">
+            
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+                
+                {
+                    page.data.map((post) => <TypeBlogPost post={post} />)
+                }
+            </div>
+
+        </section>
+  
+
+        <section aria-label="Controles" class="flex justify-between bg-gray-800 p-4 rounded-lg">
+  
+            <!--  -----  Previous page  -----  -->
+            <a
+                href={page.url.prev}
+                class:list={{
+                    disabled: !page.url.prev,
+                }}>
+                Anteriores
+            </a>
+            
+        
+            <!--  -----  Next page  -----  -->
+            <a
+                href={page.url.next}
+                class:list={{
+                    disabled: !page.url.next,
+            }}> 
+                Siguientes
+            </a>
+
+        </section>
+
+    </div>
+
+</Layout>
+  
+<style>
+    
+    @reference "tailwindcss";
+    
+    a {
+      @apply bg-blue-500 text-white p-2 rounded hover:bg-blue-600 cursor-pointer;
+    }
+  
+    .disabled {
+      @apply bg-gray-600 hover:bg-gray-600;
+    }
+
+</style>

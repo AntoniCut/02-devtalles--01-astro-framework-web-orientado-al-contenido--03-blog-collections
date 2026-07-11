@@ -23,12 +23,13 @@ import post05Img from '@images/post-05.png';
 
 <Layout title="Imágenes">
 
+    <div class="w-full space-y-10">
        
-    <Header transition:name='header'> 
-        Imágenes 
-    </Header>
+        <Header transition:name='header'> 
+            Imágenes 
+        </Header>
 
-    <section class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 my-10 justify-items-center">
+        <section class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">
 
 
         <!--  -----  etiqueta img  -----  -->
@@ -237,7 +238,7 @@ import post05Img from '@images/post-05.png';
 
     
     <!--  -----  Componente Picture de Astro - Tamaños media queries  -----  -->
-    <article class="w-full place-self-center-safe bg-gray-800 rounded-md p-2.5 mt-10">
+    <article class="w-full place-self-center-safe bg-gray-800 rounded-md p-2.5">
 
         <h2 class="h-16 text-white text-center"> Imagen 5 con componente Picture de Astro - Tamaños media queries </h2>
             
@@ -254,7 +255,7 @@ import post05Img from '@images/post-05.png';
 
 
     <!--  -----  Componente Picture de Astro - densities  -----  -->
-    <article class="w-[320px] place-self-center-safe bg-gray-800 rounded-md p-2.5 mt-10">
+    <article class="w-[320px] place-self-center-safe bg-gray-800 rounded-md p-2.5">
 
         <h2 class="h-16 text-white text-center"> Imagen 5 con componente Picture de Astro - Densidades de pixeles </h2>
             
@@ -283,7 +284,7 @@ import post05Img from '@images/post-05.png';
     <!--  -----  etiqueta img con lazy loading  -----  -->
 
     <!--  -----  centrar imagen  -----  -->
-    <article class="w-[320px] place-self-center-safe bg-gray-800 rounded-md p-2.5 mt-10">
+    <article class="w-[320px] place-self-center-safe bg-gray-800 rounded-md p-2.5">
 
         <h2 class="h-16 p-2.5 text-white text-center"> Imagen 1 con etiqueta img </h2>
         
@@ -296,7 +297,7 @@ import post05Img from '@images/post-05.png';
         >
 
     </article>
-    
 
+    </div>
     
 </Layout>
