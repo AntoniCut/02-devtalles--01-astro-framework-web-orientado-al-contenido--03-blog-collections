@@ -1,6 +1,5 @@
 ---
 
-
 /*
     *  ------------------------------------------------------------  *
     *  -----  Header.astro  --  /src/components/Header.astro  -----  *
@@ -11,27 +10,99 @@
 import { siteConfig } from '@config/site-config';
 
 
+interface Props {
+    title?: string;
+}
+
+const { title = siteConfig.title } = Astro.props;
+
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+    {
+        href: '/',
+        label: 'Home',
+        isActive: currentPath === '/',
+    },
+    {
+        href: '/blog/1',
+        label: 'Blog',
+        isActive: currentPath.startsWith('/blog') || currentPath.startsWith('/posts'),
+    },
+    {
+        href: '/authors',
+        label: 'Autores',
+        isActive: currentPath.startsWith('/authors'),
+    },
+    {
+        href: '/images',
+        label: 'Imágenes',
+        isActive: currentPath.startsWith('/images'),
+    },
+];
+
 ---
 
-<h1
-    class="
-        text-xl xs:text-2xl sm:text-3xl lg:text-4xl font-semibold text-amber-100 capitalize w-full text-center
-        lg:text-4xl dark:text-white bg-blue-300 px-4 py-2 rounded-md flex flex-row items-center justify-center xs:gap-2 gap-10
-        shadow-amber-100/20 shadow-md
-    "
->
-    <img
-        src="/astro-official.svg"
-        alt="Astro Logo"
-        class="inline w-8 h-8 mr-2 mb-1"
-    />
-        
-    <slot />
-    
-    <img
-        src="/astro-official.svg"
-        alt="Astro Logo"
-        class="inline w-8 h-8 mr-2 mb-1"
-    />
 
-</h1>
+<header
+    id="navbar"
+    class="w-full bg-gray-800 border-b border-gray-700"
+>
+    <nav
+        class="max-w-5xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-4"
+        aria-label="Navegación principal"
+    >
+        <a
+            href="/"
+            class="text-sm sm:text-base font-semibold text-white hover:text-blue-300 transition-colors"
+        >
+            {siteConfig.title}
+        </a>
+
+        <ul class="flex items-center gap-2 sm:gap-4">
+            {
+                navLinks.map((link) => (
+                    <li>
+                        <a
+                            href={link.href}
+                            class:list={[
+                                'px-3 py-1.5 rounded-md text-sm font-medium transition-colors',
+                                link.isActive
+                                    ? 'bg-blue-600 text-white'
+                                    : 'text-blue-400 hover:text-white hover:bg-gray-700',
+                            ]}
+                            aria-current={link.isActive ? 'page' : undefined}
+                        >
+                            {link.label}
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+    </nav>
+
+    <div class="max-w-5xl mx-auto px-4 py-4">
+        <h1
+            transition:name="header"
+            class="
+                text-xl xs:text-2xl sm:text-3xl lg:text-4xl font-semibold text-amber-100 capitalize w-full text-center
+                lg:text-4xl dark:text-white bg-blue-300 px-4 py-2 rounded-md flex flex-row items-center justify-center xs:gap-2 gap-10
+                shadow-amber-100/20 shadow-md
+            "
+        >
+            <img
+                src="/astro-official.svg"
+                alt="Astro Logo"
+                class="inline w-8 h-8 mr-2 mb-1"
+            />
+
+            {title}
+
+            <img
+                src="/astro-official.svg"
+                alt="Astro Logo"
+                class="inline w-8 h-8 mr-2 mb-1"
+            />
+        </h1>
+    </div>
+</header>

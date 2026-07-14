@@ -9,36 +9,27 @@
 
 
 import Layout from '@layouts/Layout.astro';
-import Header from '@components/Header.astro';
 import { siteConfig } from '@config/site-config';
 import TypeBlogPost from '@components/TypeBlogPost.astro';
 import { getCollection } from 'astro:content';
 
 
 /** -----  Get all blog posts  ----- */
-const blogPosts = await getCollection('blog');
+const blogPosts = await getCollection('blog', (post) => post.data.isDraft === false );
 
 /** -----  Get all frontmatter  ----- */
 const frontmatter = blogPosts.map((post) => post.data);
 
 //  -----  Debug  -----
 console.log(' ~ blogPosts  => ', blogPosts);
-console.log(' ~ frontmatter  => ', frontmatter);
+//console.log(' ~ frontmatter  => ', frontmatter);
 
 
 ---
 
 <Layout title={siteConfig.title}>
     
-    <div class="w-full space-y-10">
-                
-        <!--  -----  Title Page Blog  -----  -->
-        <Header transition:name='header'> 
-            {siteConfig.title}
-        </Header>
-      
-
-        <!--  -----  Posts Container  ----- -->
+    <div class="w-full">
         <section aria-label="Entradas de blog">
             <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
                 

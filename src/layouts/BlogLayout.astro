@@ -11,7 +11,7 @@ import { ClientRouter } from 'astro:transitions';
 import type { ImageMetadata } from 'astro';
 import '@styles/global.css';
 import '@styles/blog.css';
-import Navbar from '@components/Navbar.astro';
+import Header from '@components/Header.astro';
 
 
 interface Props {
@@ -52,7 +52,7 @@ console.log(' ~ frontmatter  => ', frontmatter);
 	
     <body class="bg-gray-900 flex flex-col items-center min-h-screen">
 
-        <Navbar />
+        <Header title={frontmatter.title} />
     
         <main class="w-full mb-10 max-w-5xl px-6 py-8 sm:py-10">
 

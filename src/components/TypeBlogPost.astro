@@ -9,6 +9,7 @@
 import { Formatter } from "@utils/formatter";
 import type { CollectionEntry } from "astro:content";
 import { Image } from "astro:assets";
+import BlogDate from "@components/BlogDate.astro";
 
 
 interface Props {
@@ -45,9 +46,7 @@ const frontmatter = post.data;
             {frontmatter.description}
         </a>
 
-        <span class="text-sm text-gray-500">
-            {Formatter.formatDate(frontmatter.date)}
-        </span>
+        <BlogDate date={new Date(frontmatter.date)} />
 
     </div>
 

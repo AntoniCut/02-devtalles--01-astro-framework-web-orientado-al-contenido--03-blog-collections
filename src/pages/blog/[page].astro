@@ -11,17 +11,22 @@ import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
 import Layout from '@layouts/Layout.astro';
 import TypeBlogPost from '@components/TypeBlogPost.astro';
-import Header from '@components/Header.astro';
 import { siteConfig } from '@config/site-config';
 
 
-/** -----  Get the static paths  ----- */
+/** 
+ * ------------------------------------------
+ * -----  `getStaticPaths({paginate})`  -----
+ * ------------------------------------------
+ * - Obtener las rutas estáticas de la página de blog 
+ * */
+
 export const getStaticPaths = (async ({ paginate }) => {
 
-    /** -----  Get the blog posts  ----- */        
+    /** - `Obtener los posts de blog` */        
     const blogPosts = await getCollection('blog');
 
-    /** -----  Paginate the blog posts  ----- */
+    //  -----  Paginar los posts de blog  -----
     return paginate(blogPosts, { pageSize: 2 });
 
 }) satisfies GetStaticPaths;
@@ -36,12 +41,6 @@ const { page } = Astro.props;
 <Layout title={siteConfig.title}>
     
     <div class="w-full space-y-10">
-
-        <!--  -----  Title Page Blog  -----  -->
-        <Header transition:name='header'> 
-            {siteConfig.title}
-        </Header>
-
         <section aria-label="Entradas de blog">
             
             <div class="grid grid-cols-1 gap-8 md:grid-cols-2">

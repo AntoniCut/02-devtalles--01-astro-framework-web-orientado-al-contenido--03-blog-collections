@@ -1,0 +1,123 @@
+---
+
+/*
+    *  ------------------------------------------------------------------  *
+    *  -----  AuthorCard.astro  --  /src/components/AuthorCard.astro  -----  *
+    *  ------------------------------------------------------------------  *
+*/
+
+
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+
+
+interface Props {
+    author: CollectionEntry<'author'>;
+}
+
+const { author } = Astro.props;
+const { name, avatar, subtitle, bio, twitter, linkedIn, github } = author.data;
+
+const socialUrl = (value: string) =>
+    value.startsWith('http') ? value : `https://twitter.com/${value}`;
+
+---
+
+
+<div class="max-w-lg mx-auto bg-white rounded-lg shadow-md p-5">
+
+    <Image
+        class="w-32 h-32 rounded-full mx-auto object-cover"
+        src={avatar}
+        alt={name}
+        width={128}
+        height={128}
+        quality="low"
+        loading="lazy"
+        transition:name={`${author.id}-author-avatar`}
+    />
+
+    
+    <h2 class="text-center text-2xl font-semibold mt-3 text-gray-900">
+        {name}
+    </h2>
+
+
+    {
+        subtitle && (
+            
+            <p class="text-center text-gray-600 mt-1">
+                {subtitle}
+            </p>
+        )
+    }
+
+    {
+        (twitter || linkedIn || github) && (
+            
+            <div class="flex justify-center mt-5">
+                
+                {
+                    twitter && (
+                        
+                        <a
+                            href={socialUrl(twitter)}
+                            class="text-blue-500 hover:text-blue-700 mx-3"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Twitter
+                        </a>
+                    )
+                }
+                
+                {
+                    linkedIn && (
+                        <a
+                            href={socialUrl(linkedIn)}
+                            class="text-blue-500 hover:text-blue-700 mx-3"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            LinkedIn
+                        </a>
+                    )
+                }
+                
+                {
+                    github && (
+                        <a
+                            href={socialUrl(github)}
+                            class="text-blue-500 hover:text-blue-700 mx-3"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            GitHub
+                        </a>
+                    )
+                }
+
+            </div>
+
+        )
+    }
+
+    {
+        bio && (
+            <div class="mt-5">
+                <h3 class="text-xl font-semibold text-gray-900">Bio</h3>
+                <p class="text-gray-600 mt-2">{bio}</p>
+            </div>
+        )
+    }
+
+    <div class="flex justify-center mt-5">
+        <a
+            href={`/blog/${author.id}`}
+            class="text-blue-500 hover:text-blue-700 font-medium"
+        >
+            Leer más
+        </a>
+    </div>
+
+</div>

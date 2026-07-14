@@ -1,0 +1,24 @@
+---
+
+/*
+    *  ----------------------------------------------------------------  *
+    *  -----  BlogDate.astro  --  /src/components/BlogDate.astro  -----  *
+    *  ----------------------------------------------------------------  *
+*/
+
+
+import { Formatter } from "@utils/formatter";
+
+
+interface Props {
+    date: Date;
+}
+
+const { date } = Astro.props;
+
+---
+
+
+<span class="text-sm text-gray-500">
+    {Formatter.formatDate(date)}
+</span>

@@ -1,0 +1,46 @@
+---
+
+/*
+    *  -------------------------------------------------------------  *
+    *  -----  index.astro  --  /src/pages/authors/index.astro  -----  *
+    *  -------------------------------------------------------------  *
+*/
+
+
+import Layout from '@layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import AuthorCard from '@components/AuthorCard.astro';
+
+
+/** -----  Get all authors  ----- */
+const authors = await getCollection('author');
+
+
+//  -----  Debug  -----
+console.log(' ~ authors  => ', authors);
+//console.log(' ~ frontmatter  => ', frontmatter);
+
+---
+
+
+<Layout title="Autores">
+
+    <div class="w-full">
+
+        <section aria-label="Autores">
+
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+
+                {
+                    authors.map((author) => (
+                        <AuthorCard author={author} />
+                    ))
+                }
+
+            </div>
+
+        </section>
+
+    </div>
+
+</Layout>

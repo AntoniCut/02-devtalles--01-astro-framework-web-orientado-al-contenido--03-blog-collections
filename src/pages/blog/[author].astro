@@ -1,0 +1,92 @@
+---
+
+/*
+    *  ------------------------------------------------------------------  *
+    *  -----  BlogAuthor.astro  --  /src/pages/blog/[author].astro  -----  *
+    *  ------------------------------------------------------------------  *
+*/
+
+
+import Layout from "@layouts/Layout.astro";
+import { siteConfig } from "@config/site-config";
+import TypeBlogPost from "@components/TypeBlogPost.astro";
+import { getCollection } from "astro:content";
+import type { GetStaticPaths } from "astro";
+import Author from "@components/Author.astro";
+
+
+/**
+ * --------------------------------
+ * -----  `getStaticPaths()`  -----
+ * --------------------------------
+ * @async
+ * - Obtener los autores y los posts
+ */
+
+export const getStaticPaths = (async () => {
+   
+    //  -----  Obtener los autores y los posts de las colecciones  -----
+    const [authors, posts] = await Promise.all([
+        getCollection('author'),
+        getCollection('blog'),
+    ]);
+
+
+    //  -----  Devolver los autores y los posts  -----
+    return authors.map((author) => ({
+        
+        params: { author: author.id },
+        
+        props: { 
+            blogPosts: posts.filter((post) => post.data.author.id === author.id),
+            author: author.data,
+            authorId: author.id,
+         },
+
+    }));
+    
+
+}) satisfies GetStaticPaths;
+
+
+
+const { blogPosts, author, authorId } = Astro.props;
+
+
+---
+
+<Layout
+    title={`${author.name} - ${siteConfig.title}`}
+    headerTitle={author.name}
+>
+
+    <section class="flex flex-col items-center justify-center bg-gray-900">
+
+        <div class="w-full flex flex-col items-center justify-center px-6 py-10 mx-auto">
+
+            <Author name={author.name} avatar={author.avatar} id={authorId} />
+
+            <h4 class="text-xl md:text-2xl text-center font-bold text-gray-400">
+                Listado de todos mis posts
+            </h4>
+            
+        </div>
+
+        <div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
+            {blogPosts.map((post) => <TypeBlogPost post={post} />)}
+        </div>
+
+    </section>
+
+</Layout>
+
+
+<style>
+    
+    @reference 'tailwindcss';
+
+    a {
+        @apply text-blue-500 hover:underline;
+    }
+    
+</style>
