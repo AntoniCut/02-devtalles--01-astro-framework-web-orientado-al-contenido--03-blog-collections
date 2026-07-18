@@ -18,7 +18,7 @@ export default defineConfig({
         plugins: [tailwindcss()],
     },
 
-    site: 'https://example.com',
+    site: 'https://antonydev-blog-collections.netlify.app/',
 
     integrations: [mdx()],
 });
