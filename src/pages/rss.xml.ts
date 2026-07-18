@@ -10,6 +10,7 @@ import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import sanitizeHtml from 'sanitize-html';
 import MarkdownIt from 'markdown-it';
+import { base } from '@config/base-project';
 
 
 const parser = new MarkdownIt();
@@ -25,7 +26,7 @@ export const GET: APIRoute = async ({ site }) => {
     
     return rss({
         
-        stylesheet: '/styles/rss.xsl',
+        stylesheet: `${base}/styles/rss.xsl`,
         title: 'AntonyDev’s Blog',
         description: 'Un blog sobre desarrollo web, tecnología y programación con Astro',
         site: site ?? '',
@@ -35,7 +36,7 @@ export const GET: APIRoute = async ({ site }) => {
             title: post.data.title,
             description: post.data.description,
             pubDate: post.data.date,
-            link: `/posts/${post.id}`,
+            link: `${base}/posts/${post.id}`,
             categories: post.data.tags,
 
             content: sanitizeHtml(parser.render(post.body), {

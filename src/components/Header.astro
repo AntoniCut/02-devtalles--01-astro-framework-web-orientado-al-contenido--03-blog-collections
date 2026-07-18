@@ -8,6 +8,7 @@
 
 
 import { siteConfig } from '@config/site-config';
+import { base } from '@config/base-project';
 
 
 interface Props {
@@ -16,28 +17,29 @@ interface Props {
 
 const { title = siteConfig.title } = Astro.props;
 
-const currentPath = Astro.url.pathname;
+/** -----  `URL Actual` (normalizada: sin trailing slash) ----- */
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || `${base}`;
 
 const navLinks = [
     {
-        href: '/',
+        href: `${base}`,
         label: 'Home',
-        isActive: currentPath === '/',
+        isActive: currentPath === `${base}`,
     },
     {
-        href: '/blog/1',
+        href: `${base}/blog/1`,
         label: 'Blog',
-        isActive: currentPath.startsWith('/blog') || currentPath.startsWith('/posts'),
+        isActive: currentPath.startsWith(`${base}/blog`) || currentPath.startsWith(`${base}/posts`),
     },
     {
-        href: '/authors',
+        href: `${base}/authors`,
         label: 'Autores',
-        isActive: currentPath.startsWith('/authors'),
+        isActive: currentPath.startsWith(`${base}/authors`),
     },
     {
-        href: '/images',
+        href: `${base}/images`,
         label: 'Imágenes',
-        isActive: currentPath.startsWith('/images'),
+        isActive: currentPath.startsWith(`${base}/images`),
     },
 ];
 
@@ -53,7 +55,7 @@ const navLinks = [
         aria-label="Navegación principal"
     >
         <a
-            href="/"
+            href={`${base}`}
             class="text-sm sm:text-base font-semibold text-white hover:text-blue-300 transition-colors"
         >
             {siteConfig.title}
@@ -91,7 +93,7 @@ const navLinks = [
             "
         >
             <img
-                src="/astro-official.svg"
+                src={`${base}/astro-official.svg`}
                 alt="Astro Logo"
                 class="inline w-8 h-8 mr-2 mb-1"
             />
@@ -99,7 +101,7 @@ const navLinks = [
             {title}
 
             <img
-                src="/astro-official.svg"
+                src={`${base}/astro-official.svg`}
                 alt="Astro Logo"
                 class="inline w-8 h-8 mr-2 mb-1"
             />

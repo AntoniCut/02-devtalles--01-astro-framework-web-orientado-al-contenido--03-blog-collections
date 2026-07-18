@@ -12,6 +12,7 @@ import type { ImageMetadata } from 'astro';
 import '@styles/global.css';
 import '@styles/blog.css';
 import Header from '@components/Header.astro';
+import { base } from '@config/base-project';
 
 
 interface Props {
@@ -43,7 +44,7 @@ console.log(' ~ frontmatter  => ', frontmatter);
 	
     <head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/post-favicon.png" />
+		<link rel="icon" type="image/svg+xml" href={`${base}/post-favicon.png`} />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title> {frontmatter.title} </title>

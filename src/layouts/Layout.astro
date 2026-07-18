@@ -11,6 +11,7 @@ import '@styles/global.css';
 import { ClientRouter } from 'astro:transitions';
 import Header from '@components/Header.astro';
 import { siteConfig } from '@config/site-config';
+import { base } from '@config/base-project';
 
 
 interface Props {
@@ -30,7 +31,7 @@ const { title, headerTitle } = Astro.props;
 	
     <head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/post-favicon.png" />
+		<link rel="icon" type="image/svg+xml" href={`${base}/post-favicon.png`} />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		
@@ -40,7 +41,7 @@ const { title, headerTitle } = Astro.props;
             rel="alternate"
             type="application/rss+xml"
             title="AntonyDev Blog Collections"
-            href={new URL("rss.xml", Astro.site)}
+            href={new URL(`${base}/rss.xml`, Astro.site)}
         />
 
         <ClientRouter/>

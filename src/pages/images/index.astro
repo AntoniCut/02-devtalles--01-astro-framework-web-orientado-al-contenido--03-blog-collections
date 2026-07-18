@@ -9,6 +9,7 @@
 
 import { Image, Picture } from 'astro:assets';
 import Layout from '@layouts/Layout.astro';
+import { base } from '@config/base-project';
 
 
 import post01Img from '@images/post-01.png';
@@ -33,7 +34,7 @@ import post05Img from '@images/post-05.png';
  
             <img
                 loading="eager"
-                src="/assets/images/post-05.png"
+                src={`${base}/assets/images/post-05.png`}
                 width="300"
                 height="300"
                 alt="Imagen 5 del Post"
@@ -284,7 +285,7 @@ import post05Img from '@images/post-05.png';
         
         <img
             loading="lazy"   
-            src="/assets/images/post-01.png"
+            src={`${base}/assets/images/post-01.png`}
             width="300"
             height="300"
             alt="Imagen 1 del Post"

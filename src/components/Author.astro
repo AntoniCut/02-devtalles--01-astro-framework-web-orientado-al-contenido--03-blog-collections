@@ -9,6 +9,7 @@
 
 import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
+import { base } from "@config/base-project";
 
 
 interface Props {
@@ -40,7 +41,7 @@ const { name, avatar, id } = Astro.props;
     <div class="flex flex-col">
         
         <!--*  -----  Enlace al autor  -----  -->
-        <a href=`/blog/${ id }` class="text-md text-gray-400">
+        <a href={`${base}/blog/${id}`} class="text-md text-gray-400">
             {name}
         </a>
 
