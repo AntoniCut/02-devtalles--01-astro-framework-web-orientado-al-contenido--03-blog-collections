@@ -1,0 +1,5 @@
+# Astro genera los archivos en la raíz de dist, pero los enlaces usan `base`.
+# Estas reglas reescriben la URL con base hacia los archivos reales en Netlify.
+/01-astro-framework-web-orientado-al-contenido/03-blog-collections    /index.html    200
+/01-astro-framework-web-orientado-al-contenido/03-blog-collections/   /index.html    200
+/01-astro-framework-web-orientado-al-contenido/03-blog-collections/*  /:splat        200

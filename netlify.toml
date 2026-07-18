@@ -1,0 +1,24 @@
+[build]
+  command = "pnpm run build"
+  publish = "dist"
+
+[build.environment]
+  PUBLIC_BASE_URL = "/01-astro-framework-web-orientado-al-contenido/03-blog-collections"
+
+[[redirects]]
+  from = "/01-astro-framework-web-orientado-al-contenido/03-blog-collections"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/01-astro-framework-web-orientado-al-contenido/03-blog-collections/"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/01-astro-framework-web-orientado-al-contenido/03-blog-collections/*"
+  to = "/:splat"
+  status = 200
+  force = true

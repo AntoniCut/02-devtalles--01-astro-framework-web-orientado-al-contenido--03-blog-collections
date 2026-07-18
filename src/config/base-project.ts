@@ -5,5 +5,7 @@
 */
 
 
-/**  -----  `Base URL del proyecto` ----- */
-export const base: string = import.meta.env.PUBLIC_BASE_URL;
+/**  -----  `Base URL del proyecto` (sin trailing slash) ----- */
+export const base: string = (
+    import.meta.env.PUBLIC_BASE_URL || import.meta.env.BASE_URL || ''
+).replace(/\/$/, '');
