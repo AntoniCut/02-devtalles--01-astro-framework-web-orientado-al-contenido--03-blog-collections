@@ -35,6 +35,14 @@ const { title, headerTitle } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		
 		<title> {title} </title>
+
+        <link
+            rel="alternate"
+            type="application/rss+xml"
+            title="AntonyDev Blog Collections"
+            href={new URL("rss.xml", Astro.site)}
+        />
+
         <ClientRouter/>
 	</head>
        
